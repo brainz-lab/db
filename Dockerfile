@@ -19,5 +19,5 @@ RUN apt-get update && apt-get install -y \
 # - max_worker_processes: allow enough background workers (default 8 is too low)
 # - timescaledb.max_background_workers: workers for TimescaleDB jobs
 RUN echo "shared_preload_libraries = 'timescaledb'" >> /usr/share/postgresql/postgresql.conf.sample \
-    && echo "max_worker_processes = 32" >> /usr/share/postgresql/postgresql.conf.sample \
-    && echo "timescaledb.max_background_workers = 16" >> /usr/share/postgresql/postgresql.conf.sample
+    && echo "max_worker_processes = 64" >> /usr/share/postgresql/postgresql.conf.sample \
+    && echo "timescaledb.max_background_workers = 32" >> /usr/share/postgresql/postgresql.conf.sample
