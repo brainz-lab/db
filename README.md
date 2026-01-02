@@ -13,12 +13,12 @@ Custom PostgreSQL image with TimescaleDB and pgvector extensions pre-installed.
 ### Docker Hub
 
 ```bash
-docker pull brainzlab/db:latest
+docker pull brainzllc/db:latest
 docker run -d \
   --name brainzlab-db \
   -e POSTGRES_PASSWORD=postgres \
   -p 5432:5432 \
-  brainzlab/db:latest
+  brainzllc/db:latest
 ```
 
 ### Docker Compose
@@ -26,7 +26,7 @@ docker run -d \
 ```yaml
 services:
   db:
-    image: brainzlab/db:latest
+    image: brainzllc/db:latest
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
@@ -46,7 +46,7 @@ volumes:
 ## Building Locally
 
 ```bash
-docker build -t brainzlab/db:latest .
+docker build -t brainzllc/db:latest .
 ```
 
 ## Enabling Extensions
