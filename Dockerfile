@@ -5,7 +5,7 @@ FROM pgvector/pgvector:pg${PG_VERSION}
 
 ARG PG_VERSION=18
 
-# Install timescaledb
+# Install timescaledb and postgis
 RUN apt-get update && apt-get install -y \
     gnupg \
     lsb-release \
@@ -13,7 +13,10 @@ RUN apt-get update && apt-get install -y \
     && echo "deb https://packagecloud.io/timescale/timescaledb/debian/ $(lsb_release -c -s) main" > /etc/apt/sources.list.d/timescaledb.list \
     && wget --quiet -O - https://packagecloud.io/timescale/timescaledb/gpgkey | apt-key add - \
     && apt-get update \
-    && apt-get install -y timescaledb-2-postgresql-${PG_VERSION} \
+    && apt-get install -y \
+        timescaledb-2-postgresql-${PG_VERSION} \
+        postgresql-${PG_VERSION}-postgis-3 \
+        postgresql-${PG_VERSION}-postgis-3-scripts \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
