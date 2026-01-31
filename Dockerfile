@@ -1,9 +1,9 @@
 # Custom PostgreSQL with TimescaleDB and pgvector
 # Based on pgvector image with timescaledb added
-ARG PG_VERSION=17
+ARG PG_VERSION=18
 FROM pgvector/pgvector:pg${PG_VERSION}
 
-ARG PG_VERSION=17
+ARG PG_VERSION=18
 
 # Install timescaledb
 RUN apt-get update && apt-get install -y \
