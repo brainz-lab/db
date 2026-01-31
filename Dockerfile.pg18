@@ -1,0 +1,21 @@
+FROM postgres:18
+
+# Install build dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+    ca-certificates \
+    git \
+    postgresql-server-dev-18 \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install pgvector
+RUN git clone --branch v0.8.0 https://github.com/pgvector/pgvector.git /tmp/pgvector \
+    && cd /tmp/pgvector \
+    && make \
+    && make install \
+    && rm -rf /tmp/pgvector
+
+# Clean up build dependencies
+RUN apt-get purge -y --auto-remove build-essential git postgresql-server-dev-18 \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
